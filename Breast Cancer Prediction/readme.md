@@ -184,34 +184,59 @@ We have different types of classification algorithms in Machine Learning :-
 >  Decision Tree
 > 
 >  Random Forest Classifier
+>
+>  K-Nearest Neighbors
+>
+>  Naive Bayes
+>
+>  SVM
 
 Lets start applying the algorithms :
 
 We will use sklearn library to import all the methods of classification algorithms.
 
 ```python
-# Function for Models
-def models(X_train , Y_train):
-    #Logistic Regression
+def models(X_train, Y_train):
+    # Logistic regression
     from sklearn.linear_model import LogisticRegression
     log = LogisticRegression(random_state=0)
     log.fit(X_train, Y_train)
-    
-    #Decision Tree
+        
+    # Decision Tree
     from sklearn.tree import DecisionTreeClassifier
-    tree = DecisionTreeClassifier(criterion='entropy', random_state=0)
+    tree = DecisionTreeClassifier(random_state=0, criterion="entropy")
     tree.fit(X_train, Y_train)
-    
-    #Random Forest Classifier
+        
+    # Random Forest
     from sklearn.ensemble import RandomForestClassifier
-    forest = RandomForestClassifier(n_estimators=10, criterion='entropy',random_state=0)
-    forest.fit(X_train,Y_train)
+    forest = RandomForestClassifier(random_state=0, criterion="entropy", n_estimators=10)
+    forest.fit(X_train, Y_train)
     
-    print('[0]Logistic Regression trainning accuracy:',log.score(X_train,Y_train))
-    print('[1]Decision trainning accuracy:',tree.score(X_train,Y_train))
-    print('[2]Random Forest classifier trainning accuracy:',forest.score(X_train,Y_train))
+    # K-Nearest Neighbors
+    from sklearn.neighbors import KNeighborsClassifier
+    knn = KNeighborsClassifier(n_neighbors=5)
+    knn.fit(X_train, Y_train)
     
-    return log,tree,forest
+    # Naive Bayes
+    from sklearn.naive_bayes import GaussianNB
+    nb = GaussianNB()
+    nb.fit(X_train, Y_train)
+        
+    # SVM
+    from sklearn.svm import SVC
+    svm = SVC(kernel='linear', random_state=0)
+    svm.fit(X_train, Y_train)
+
+    # Print accuracies
+    print('[0] Logistic regression accuracy:', log.score(X_train, Y_train))
+    print('[1] Decision tree accuracy:', tree.score(X_train, Y_train))
+    print('[2] Random forest accuracy:', forest.score(X_train, Y_train))
+    print('[3] K-Nearest Neighbors accuracy:', knn.score(X_train, Y_train))
+    print('[4] Naive Bayes accuracy:', nb.score(X_train, Y_train))
+    print('[5] SVM accuracy:', svm.score(X_train, Y_train))
+
+    # Return models
+    return log, tree, forest, knn, nb, svm
 
 model = models(X_train,Y_train)
 ```
