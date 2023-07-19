@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Link Shortener</title>
+</head>
+<body>
+    <div class="container">
+        <div class="text__container">
+            <h2>Link Compressor</h2>
+            <p>Enter the link you want to compress.</p>
+        </div>
+
+        <div class="error__msg">
+            <span id="error">You must paste a valid URL</span>
+        </div>
+
+        <form class="shortener__container">
+            <div class="back__color"></div>
+            <div class="input__container">
+                <input type="text" id="shortener" placeholder="Paste your link here">
+                <button id="submit__btn">Compress</button>
+            </div>
+        </form>
+
+        <div class="links__container">
+        </div>
+    </div>
+    
+    <script src="main.js"></script>
+</body>
+</html>
